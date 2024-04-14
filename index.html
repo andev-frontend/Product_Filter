@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Filter Product</title>
+</head>
+<body>
+    <div class="container">
+        <div class="filter_buttons">
+            <button data-filter="all" class="active">All</button>
+            <button data-filter="iphone">iPhone</button>
+            <button data-filter="samsung">Samsung</button>
+            <button data-filter="xiaomi">Xiaomi</button>
+        </div>
+        <div class="product_cards">
+            <div class="card" data-filter="iphone">
+                <img src="./images/iphone1.jpg" alt="">
+                <h6 class="card_title">iPhone</h6>
+            </div>
+            <div class="card" data-filter="iphone">
+                <img src="./images/iphone2.jpg" alt="">
+                <h6 class="card_title">iPhone</h6>
+            </div>
+            <div class="card" data-filter="iphone">
+                <img src="./images/iphone3.jpg" alt="">
+                <h6 class="card_title">iPhone</h6>
+            </div>
+            <div class="card" data-filter="samsung">
+                <img src="./images/samsung1.jpg" alt="">
+                <h6 class="card_title">Samsung</h6>
+            </div>
+            <div class="card" data-filter="samsung">
+                <img src="./images/samsung2.jpg" alt="">
+                <h6 class="card_title">Samsung</h6>
+            </div>
+            <div class="card" data-filter="xiaomi">
+                <img src="./images/xiaomi1.jpg" alt="">
+                <h6 class="card_title">Xiaomi</h6>
+            </div>
+            <div class="card" data-filter="xiaomi">
+                <img src="./images/xiaomi2.jpg" alt="">
+                <h6 class="card_title">Xiaomi</h6>
+            </div>
+            <div class="card" data-filter="xiaomi">
+                <img src="./images/xiaomi3.jpg" alt="">
+                <h6 class="card_title">Xiaomi</h6>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    const filterButtons = document.querySelectorAll(".filter_buttons button")
+    const productCards = document.querySelectorAll(".product_cards .card")
+
+    const filterCards = e =>{
+        document.querySelector(".active").classList.remove("active")
+        e.target.classList.add("active")
+
+        productCards.forEach(item =>{
+            item.classList.add("hide")
+
+            if(item.getAttribute("data-filter") === e.target.getAttribute("data-filter") || e.target.getAttribute("data-filter") === "all"){
+                item.classList.remove("hide")
+            }
+        })
+    }
+
+    filterButtons.forEach(button => button.addEventListener("click", filterCards))
+</script>
+</html>
